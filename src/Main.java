@@ -4,7 +4,7 @@ public class Main {
     public static int bossHealth = 700;
     public static int bossDamage = 50;
     public static String bossDefence;
-    public static int[] heroesHealth = {280, 270, 250, 250};
+    public static int[] heroesHealth = {280, 270, 250, 260};
     public static int[] heroesDamage = {10, 15, 20, 0};
     public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic", "Medic"};
     public static int roundNumber;
@@ -70,21 +70,17 @@ public class Main {
 public static void heroHeal(){
     for (int i = 0; i < heroesHealth.length ; i++) {
         Random random = new Random();
-        int person = random.nextInt(heroesAttackType.length);
+        int person = random.nextInt(heroesAttackType.length - 1) ;
 
-
-         if(heroesHealth[3] > 0 && heroesHealth[i] < 100 ){
+         if(heroesHealth[3] > 0 && heroesHealth[i] < 100){
              Random hp = new Random();
             int hpHeal = hp.nextInt(70);
             heroesHealth[i] = hpHeal + heroesHealth[i];
-            System.out.println("Персонаж: " + heroesAttackType[person] + " излечен на" + ": " + hpHeal);
+            System.out.println("Персонаж: " + heroesAttackType[person]  + " излечен на" + ": " + hpHeal);
             break;
         }
     }
 }
-
-
-
 
     public static boolean isGameOver() {
         if (bossHealth <= 0){
